@@ -15,7 +15,7 @@ namespace Docy.Console
 		static void Main(string[] args)
 		{
 			DocParser parser = new DocParser();
-			IEnumerable<Namespace> namespaces = parser.Parse(@"C:\projects\roadkill\Roadkill.Core\bin\Release\Roadkill.Core.dll");
+			IEnumerable<Namespace> namespaces = parser.Parse(@"D:\projects\Github\Docy\Docy.Site\App_Data\libs\Roadkill.Core.dll");
 			Razor.SetTemplateBase(typeof(TemplateBase<>));
 
 			// Namespaces			
@@ -35,7 +35,11 @@ namespace Docy.Console
 				foreach (TypeBase typeBase in nameSpace.AllTypes)
 				{
 					output = Razor.Parse<TypeBase>(typeTemplate, typeBase);
-					File.WriteAllText(@"Output\" + typeBase.Fullname + ".html", output);
+
+					string filename = typeBase.Fullname;
+					filename = filename.Replace("<", "{");
+					filename = filename.Replace(">", "}");
+					File.WriteAllText(@"Output\" + filename + ".html", output);
 				}
 			}
 		}

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -43,9 +45,12 @@ namespace Docy.Site
 		{
 			AreaRegistration.RegisterAllAreas();
 
+			string root = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data", "libs");
+			root = Path.Combine(root, ConfigurationManager.AppSettings["AssemblyToScan"]);
+
 			DocParser parser = new DocParser();
 			Namespaces = parser.Parse(new string[]{
-				@"C:\projects\roadkill\Roadkill.Core\bin\Release\Roadkill.Core.dll"
+				root
 			});
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
