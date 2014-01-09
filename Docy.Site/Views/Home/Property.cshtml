@@ -1,0 +1,41 @@
+﻿@model Property
+
+@{
+	ViewBag.Title = string.Format("{0} {1} Property ({2})",Model.Parent.Name,Model.Name,Model.Parent.Namespace);
+}
+
+@section Header
+{
+	<h2>@Model.Name Property</h2>
+}
+
+<div id="toc">
+	@Html.Partial("Toc-Namespaces",Model.Parent)
+
+	<div class="bluetitlebar">@Model.Name Properties</div>
+	<div class="toc-links">
+	@foreach (Property property in Model.Parent.Properties)
+	{
+		@Html.TruncatedActionLink(property.Name, "Property", new { className = Model.Parent.Fullname, id = property.Id })<br />
+	}
+	</div>
+</div>
+
+<div id="content">
+
+	<div id="summary">
+	@Model.Summary
+	</div>
+
+
+	<div class="bold">Property Value</div><br />
+	<div>Type: @Html.TypeLink(Model.Type)<br />
+	@Model.Summary
+	</div>
+
+@if (!string.IsNullOrEmpty(Model.Example))
+{
+	<h3 class="title">Examples</h3>
+	<p>@Model.Example</p>
+}
+</div>

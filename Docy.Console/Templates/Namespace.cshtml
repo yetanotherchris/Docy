@@ -1,0 +1,117 @@
+﻿@using Docy.Core
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.Name</title>
+	<link href="Site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="content">
+	<h2 class="title">Classes</h2>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Classes)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="class.gif" border="0" alt="class" /></td>
+				<td><a href="@(type.Fullname).html">@type.Name</a></td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+	<h2 class="title">Structures</h2>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Structures)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="structure.gif" border="0" alt="class" /></td>
+				<td><a href="@(type.Fullname).html">@type.Name</a></td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+	<h2 class="title">Enumerations</h2>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Enumerations)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="enumeration.gif" border="0" alt="class" /></td>
+				<td><a href="@(type.Fullname).html">@type.Name</a></td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+	<h2 class="title">Interfaces</h2>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Interfaces)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="interface.gif" border="0" alt="class" /></td>
+				<td><a href="@(type.Fullname).html">@type.Name</a></td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+	<h2 class="title">Delegates</h2>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Delegates)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="delegate.gif" border="0" alt="class" /></td>
+				<td><a href="@(type.Fullname).html">@type.Name</a></td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

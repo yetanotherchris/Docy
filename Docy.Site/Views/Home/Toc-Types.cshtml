@@ -1,0 +1,9 @@
+﻿@model TypeBase
+	
+	<div class="bluetitlebar">@Model.Namespace.Name</div>
+	<div class="toc-links">
+	@foreach (TypeBase type in Model.Namespace.AllTypes)
+	{
+		@Html.TruncatedActionLink(type.Name + " " + type.ObjectType, "Type", new { id = type.Fullname },new { title = type.Name + " " + type.ObjectType })<br />
+	}
+	</div>

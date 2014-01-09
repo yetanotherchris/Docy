@@ -1,0 +1,143 @@
+﻿@model Namespace
+
+@{
+    ViewBag.Title = string.Format("{0} Namespace",Model.Name);
+}
+
+@section Header
+{
+	<h2>@Model.Name</h2>
+}
+
+<div id="toc">
+	<div class="bluetitlebar">Namespaces</div>
+	<div class="toc-links">
+	@foreach (Namespace nameSpace in MvcApplication.Namespaces)
+	{
+		@Html.TruncatedActionLink(nameSpace.Name, "Namespace", new { id = nameSpace.Name })<br />
+	}
+	</div>
+</div>
+
+<div id="content">
+
+@if (Model.Classes.Count > 0)
+{
+	<h2 class="title">Classes</h2>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Classes)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/class.gif")" border="0" alt="class" /></td>
+				<td>@Html.ActionLink(type.Name, "Type", new { id = type.Fullname })</td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@if (Model.Structures.Count > 0)
+{
+	<h2 class="title">Structures</h2>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Structures)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/structure.gif")" border="0" alt="class" /></td>
+				<td>@Html.ActionLink(type.Name, "Type", new { id = type.Fullname })</td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@if (Model.Enumerations.Count > 0)
+{
+	<h2 class="title">Enumerations</h2>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Enumerations)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/enumeration.gif")" border="0" alt="class" /></td>
+				<td>@Html.ActionLink(type.Name, "Type", new { id = type.Fullname })</td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@if (Model.Interfaces.Count > 0)
+{
+	<h2 class="title">Interfaces</h2>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Interfaces)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/interface.gif")" border="0" alt="class" /></td>
+				<td>@Html.ActionLink(type.Name, "Type", new { id = type.Fullname })</td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@if (Model.Delegates.Count > 0)
+{
+	<h2 class="title">Delegates</h2>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (TypeBase type in Model.Delegates)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/delegate.gif")" border="0" alt="class" /></td>
+				<td>@Html.ActionLink(type.Name, "Type", new { id = type.Fullname })</td>
+				<td>@type.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+</div>

@@ -1,0 +1,52 @@
+﻿@using Docy.Site
+@model Constructor
+
+@{
+	ViewBag.Title = string.Format("{0} Constructor ({1}) ({2})",Model.Parent.Name,Model.ParameterTypes(),Model.Parent.Namespace);
+}
+
+@section Header
+{
+	<h2>@Model.Name Constructor (@Model.ParameterTypes())</h2>
+}
+
+<div id="toc">
+	@Html.Partial("Toc-Namespaces",Model.Parent)
+
+	<div class="bluetitlebar">@Model.Name Constructors</div>
+	<div class="toc-links">
+	@foreach (Constructor constructor in Model.Parent.Constructors)
+	{
+		@Html.TruncatedActionLink(constructor.Name + "(" +constructor.ParameterTypes()+ ")", "Constructor", new { className = Model.Parent.Fullname, id = constructor.Id })
+		<br />
+	}
+	</div>
+</div>
+
+
+<div id="content">
+	<div id="summary">
+	@Model.Summary
+	</div>
+
+	<h3 class="title">Parameters</h3>
+	<dl>
+		@foreach (Parameter parameter in Model.Parameters)
+		{
+			<dt class="italic">@parameter.Name</dt>
+			<dd>
+				Type: @Html.TypeLink(parameter.TypeFullName)<br />
+				@parameter.Description
+			</dd>
+		}
+	</dl>
+
+	<h3 class="title">Exceptions</h3>
+	<p></p>
+
+	<h3 class="title">Remarks</h3>
+	<p>@Model.Remarks</p>
+
+	<h3 class="title">Examples</h3>
+	<p>@Model.Example</p>
+</div>

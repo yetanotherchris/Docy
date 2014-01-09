@@ -1,0 +1,16 @@
+﻿@using Docy.Core
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Namespaces</title>
+	<link href="Site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h2>Namespaces</h2>
+	@foreach (Namespace nameSpace in Model)
+	{
+		<div><a href="@(nameSpace.Name).html">@nameSpace.Name</a></div>
+	}
+</body>
+</html>

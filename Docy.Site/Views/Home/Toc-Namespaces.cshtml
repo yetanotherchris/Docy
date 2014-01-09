@@ -1,0 +1,10 @@
+﻿@model TypeBase
+		   
+	<div class="bluetitlebar">Namespaces</div>
+	<div class="toc-links">
+	@foreach (Namespace nameSpace in MvcApplication.Namespaces)
+	{
+		@Html.TruncatedActionLink(nameSpace.Name, "Namespace", new { id = nameSpace.Name })<br />
+	}
+	@Html.TruncatedActionLink(Model.Name +" "+ Model.ObjectType, "Type", new { id = Model.Fullname })<br />
+	</div>

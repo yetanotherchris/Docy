@@ -1,0 +1,25 @@
+body
+{
+    font-family: 'Segoe UI',Verdana,Arial;
+}
+
+#summary { margin-bottom:20px;}
+#class-hierachy { margin-bottom:20px;}
+.imagecolumn { width:25px;}
+
+.column { float:left;border:1px solid black;padding:5px;width:150px;margin-bottom:20px; }
+.title	{font-size: 15pt;font-weight:bold;color:#3F529C;display:inline;}
+#content { font-size: .7em; }
+
+table	 { min-width:600px;border-collapse:collapse;margin:0px 0px 10px 0px;}
+table td { padding: 4px;border: 1px solid #D5D5D3;border-spacing: 2px 2px;}
+
+th
+{
+	display: table-cell;
+	color: black;
+	border-bottom: #c8cdde 1px solid;
+	text-align: left;
+	padding: 4px;
+	background-color: #E5E5E5;
+}

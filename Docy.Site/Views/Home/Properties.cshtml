@@ -1,0 +1,49 @@
+﻿@model TypeBase
+
+@{
+    ViewBag.Title = string.Format("{0} ({1})",Model.Name,Model.Namespace.Name);
+}
+
+@section Header
+{
+	<h2>@Model.Name Properties</h2>
+}
+
+<div id="toc">
+	@Html.Partial("Toc-Namespaces",Model)
+
+	<div class="bluetitlebar">@Model.Name Properties</div>
+	<div class="toc-links">
+	@foreach (Property property in Model.Properties)
+	{
+		@Html.TruncatedActionLink(property.Name, "Property", new { className = Model.Fullname, id = property.Id })<br />
+	}
+	</div>
+
+	@Html.Partial("Toc-Types",Model,ViewData)
+</div>
+
+<div id="content">
+	The @Html.ActionLink(@Model.Name, "Type", new { id = Model.Fullname }) type exposes the following members.
+
+	<h3 class="title">Properties</h3>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th class="description">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Property property in Model.Properties)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/property.gif")" border="0" alt="property" /></td>
+				<td>@Html.ActionLink(property.Name, "Property", new { className = Model.Fullname, id = property.Id })</td>
+				<td class="description">@property.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>

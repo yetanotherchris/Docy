@@ -1,0 +1,22 @@
+﻿@model TypeBase
+	
+@if (Model.Constructors.Count > 0 && Model.Methods.Count > 0 && Model.Properties.Count > 0)
+{
+	<div class="bluetitlebar">@Model.Name</div>
+	<div class="toc-links">
+	@if (Model.Constructors.Count > 0)
+	{
+	@Html.TruncatedActionLink(Model.Name + " Constructor", "Constructors", new { id = Model.Fullname })<br />
+	}
+		
+	@if (Model.Methods.Count > 0)
+	{
+		@Html.TruncatedActionLink(Model.Name + " Methods", "Methods", new { id = Model.Fullname })<br />
+	}
+
+	@if (Model.Properties.Count > 0)
+	{
+		@Html.TruncatedActionLink(Model.Name + " Properties", "Properties", new { id = Model.Fullname })<br />
+	}
+	</div>
+}

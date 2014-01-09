@@ -1,0 +1,56 @@
+﻿@model TypeBase
+
+@{
+    ViewBag.Title = string.Format("{0} ({1})",Model.Name,Model.Namespace.Name);
+}
+
+@section Header
+{
+	<h2>@Model.Name Methods</h2>
+}
+
+<div id="toc">
+	@Html.Partial("Toc-Namespaces",Model)
+
+	<div class="bluetitlebar">@Model.Name Methods</div>
+	<div class="toc-links">
+	@foreach (Method method in Model.Methods)
+	{
+		@Html.TruncatedActionLink(method.Name, "Method", new { className = Model.Fullname, id = method.Id })<br />
+	}
+	</div>
+
+	@Html.Partial("Toc-Types",Model,ViewData)
+</div>
+
+<div id="content">
+	The @Html.ActionLink(@Model.Name, "Type", new { id = Model.Fullname }) type exposes the following members.
+
+	<h3 class="title">Methods</h3>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th class="description">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Method method in Model.Methods)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/method.gif")" border="0" alt="method" /></td>
+				<td>
+				@Html.ActionLink(method.Name, "Method", new { className = Model.Fullname,id = method.Id })
+				
+				@if (method.Parameters.Count > 0)
+				{
+				<text>(</text>@method.ParameterTypes()<text>)</text>
+				}
+				</td>
+				<td class="description">@method.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>

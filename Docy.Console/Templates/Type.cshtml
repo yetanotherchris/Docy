@@ -1,0 +1,96 @@
+﻿@using Docy.Core
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.Name + "(" +Model.Namespace+ ")"</title>
+	<link href="Site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="content">
+	<h2 class="title">@Model.Name</h2>
+
+	<div id="summary">
+	@Model.Summary
+	</div>
+
+	<div id="class-hierachy">
+		@{
+			int x = 1;
+		}
+		@for (int i = 0; i < Model.Parents.Count; i++)
+		{
+			<div style="color:red">Model.Parents[i].Fullname</div>
+			{
+			x = i;
+			}
+		}
+		<div style="color:red">@Model.Name</div>
+	</div>
+
+	<h3 class="title">Methods</h3>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Method method in Model.Methods)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="method.gif" border="0" alt="method" /></td>
+				<td>@method.Name
+				<text>(</text>@method.ParameterTypes()<text>)</text></td>
+				<td>@method.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+	<h3 class="title">Properties</h3>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Property property in Model.Properties)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="property.gif" border="0" alt="property" /></td>
+				<td>@property.Name</td>
+				<td>@property.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+	<h3 class="title">Members</h3>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (MemberSummary property in Model.Members)
+		{
+			<tr>
+				<td class="imagecolumn"></td>
+				<td>@property.Name</td>
+				<td>@property.Description</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

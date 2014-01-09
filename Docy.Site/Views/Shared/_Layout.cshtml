@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Assets/CSS/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Assets/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+	<link rel="shortcut icon" href="@Url.Content("~/Assets/Images/favicon.ico")" />
+</head>
+
+<body>
+	<div id="header">@RenderSection("Header", false)
+		<div id="headerlogo"><img src="@Url.Content("~/Assets/Images/header-logo.png")" alt="docy" /></div>
+	</div>
+    <div>@RenderBody()</div>
+</body>
+</html>

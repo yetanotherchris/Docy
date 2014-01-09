@@ -1,0 +1,25 @@
+body		{ font-family: 'Segoe UI',Verdana,Arial; margin:0; }
+.column		{ float:left;border:1px solid black;padding:5px;width:150px;margin-bottom:20px; }
+.title		{ font-size:15pt;font-weight:bold;color:#3F529C;margin:0 0 10px 0;padding:0; }
+.italic		{ font-style:italic; }
+.bold		{ font-weight:bold; }
+.fullwidth	{ width:100%; }
+
+a:link,a:visited{ color: #2178E0;text-decoration: none; }
+#summary		{ margin-bottom:20px; }
+#class-hierachy	{ margin-bottom:20px; }
+.imagecolumn	{ width:25px; }
+
+#headerlogo		{ margin:0;padding:0;right:10px;top:0;position:absolute; }
+#header h2		{ margin:5px 0;padding:0; }
+#toc			{ float:left;font-size:0.7em;width:230px;clear:left;background-color:white;border-bottom:solid 1px #BBB;padding-bottom:10px; }
+.toc-links		{ margin:5px; }
+
+#content		{ padding:10px;font-size: .7em;border-top: .2em solid #425A81;margin-left: 230px;height:100%;background-color:white; }
+
+.bluetitlebar	{ padding: .6em;background-color: #425A81;height:0.9em;color:white;font-weight: bold;overflow: hidden; }
+table.types		{ border-collapse:collapse;margin:0px 0px 10px 0px;width:100%; }
+table.types td	{ padding: 4px;border: 1px solid #D5D5D3;border-spacing: 2px 2px; }
+
+table.types th	{ display: table-cell;color: black;border-bottom: #c8cdde 1px solid;text-align: left;padding: 4px;	background-color: #E5E5E5; }
+table#parameters td { padding: 4px;border-spacing: 2px 2px; }

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Namespace>
+
+@{
+    ViewBag.Title = "Namespaces";
+}
+
+@section Header
+{
+	<h2>Project name</h2>
+}
+
+<div id="toc">
+	<div class="bluetitlebar">Namespaces</div>
+	<div class="toc-links">
+	@foreach (Namespace nameSpace in MvcApplication.Namespaces)
+	{
+		@Html.TruncatedActionLink(nameSpace.Name, "Namespace", new { id = nameSpace.Name })<br />
+	}
+	</div>
+</div>
+
+<div id="content">
+	<h2 class="title">Namespaces</h2>
+
+	<table class="types fullwidth">
+		<thead>
+			<tr>
+				<th>Namespace</th>
+				<th class="description">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Namespace nameSpace in Model)
+		{
+			<tr>
+				<td>@Html.ActionLink(nameSpace.Name,"Namespace",new { id = nameSpace.Name})</td>
+				<td class="description"></td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,57 @@
+﻿@model TypeBase
+
+@{
+    ViewBag.Title = string.Format("{0} Constructor ({1})",Model.Name,Model.Namespace.Name);
+}
+
+@section Header
+{
+	<h2>@Model.Name Constructor</h2>
+}
+
+<div id="toc">
+	@Html.Partial("Toc-Namespaces")
+
+	<!-- Constructor list -->
+	<div class="bluetitlebar">@Model.Name Constructor</div>
+	<div class="toc-links">
+	@foreach (Constructor constructor in Model.Constructors)
+	{
+		@Html.TruncatedActionLink(constructor.Name +" ("+ constructor.ParameterTypes() +")", "Constructor", new { className = Model.Fullname, id = constructor.Id })<br />
+	}
+	</div>
+
+	@Html.Partial("Toc-CtorsMethodsProps", Model, ViewData)
+</div>
+
+<div id="content">
+	Initializes a new instance of the <b>@Model.Name</b>&nbsp;@Model.ObjectType
+
+	<h3 class="title">Overload list	</h3>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th class="description">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Constructor constructor in Model.Constructors)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/method.gif")" border="0" alt="method" /></td>
+				<td>
+				@Html.ActionLink(constructor.Name, "Constructor", new { className = Model.Fullname, id = constructor.Id })
+				
+				@if (constructor.Parameters.Count > 0)
+				{
+				<text>(</text>@constructor.ParameterTypes()<text>)</text>
+				}
+				</td>
+				<td class="description">@constructor.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>

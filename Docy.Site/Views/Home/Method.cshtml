@@ -1,0 +1,70 @@
+﻿@using Docy.Site
+@model Method
+
+@{
+	ViewBag.Title = string.Format("{0} {1} Method ({2}) ({3})",Model.Parent.Name,Model.Name,Model.ParameterTypes(),Model.Parent.Namespace);
+}
+
+@section Header
+{
+	<h2>@Model.Name Method</h2>
+}
+
+<div id="toc">
+	@Html.Partial("Toc-Namespaces",Model.Parent)
+
+	<div class="bluetitlebar">@Model.Name Methods</div>
+	<div class="toc-links">
+	@foreach (Method method in Model.Parent.Methods)
+	{
+		@Html.TruncatedActionLink(method.Name, "Method", new { className = Model.Parent.Fullname, id = method.Id })
+		<br />
+	}
+	</div>
+</div>
+
+
+<div id="content">
+	<div id="summary">
+	@Model.Summary
+	</div>
+
+	<h3 class="title">Parameters</h3>
+	<dl>
+		@foreach (Parameter parameter in Model.Parameters)
+		{
+			<dt class="italic">@parameter.Name</dt>
+			<dd>
+				Type: @Html.TypeLink(parameter.TypeFullName)<br />
+				@parameter.Description
+			</dd>
+			<dd><br /></dd>
+		}
+	</dl>
+
+@if (Model.ReturnType.ToLower() != "void")
+{
+	<div class="bold">Return Value</div><br />
+	<div>Type: @Html.TypeLink(Model.ReturnTypeFullName)<br />
+	@Model.Returns
+	</div>
+}
+
+@if (!string.IsNullOrEmpty(Model.Exceptions))
+{
+	<h3 class="title">Exceptions</h3>
+	<p></p>
+}
+
+@if (!string.IsNullOrEmpty(Model.Remarks))
+{
+	<h3 class="title">Remarks</h3>
+	<p>@Model.Remarks</p>
+}
+
+@if (!string.IsNullOrEmpty(Model.Example))
+{
+	<h3 class="title">Examples</h3>
+	<p>@Model.Example</p>
+}
+</div>

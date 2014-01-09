@@ -1,0 +1,148 @@
+﻿@model TypeBase
+
+@{
+    ViewBag.Title = string.Format("{0} ({1})",Model.Name,Model.Namespace.Name);
+}
+
+@section Header
+{
+	<h2>@Model.Name</h2>
+}
+
+<div id="toc">
+	@Html.Partial("Toc-Namespaces")
+	@Html.Partial("Toc-CtorsMethodsProps", Model, ViewData)
+	@Html.Partial("Toc-Types",Model)
+</div>
+
+<div id="content">
+	<h2 class="title">@Model.Name</h2>
+
+	<div id="summary">
+	@Model.Summary
+	</div>
+
+	<div id="class-hierachy">
+		@{
+			int x = 1;
+		}
+		@for (int i = 0; i < Model.Parents.Count; i++)
+		{
+			<div style="@Html.IndentHierachy(i)">@Html.TypeLink(Model.Parents[i].Fullname)</div>
+			{
+			x = i;
+			}
+		}
+		<div style="@Html.IndentHierachy(x+1)">@Model.Fullname</div>
+	</div>
+
+@if (Model.Constructors.Count > 0)
+{
+	<h3 class="title">Constructors</h3>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th class="description">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Constructor constructor in Model.Constructors)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/method.gif")" border="0" alt="constructor" /></td>
+				<td>
+				@Html.ActionLink(constructor.Name, "Constructor", new { className = Model.Fullname, id = constructor.Id })
+				
+				@if (constructor.Parameters.Count > 0)
+				{
+				<text>(</text>@constructor.ParameterTypes()<text>)</text>
+				}
+				</td>
+				<td class="description">@constructor.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@if (Model.Methods.Count > 0)
+{
+	<h3 class="title">Methods</h3>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th class="description">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Method method in Model.Methods)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/method.gif")" border="0" alt="method" /></td>
+				<td>
+				@Html.ActionLink(method.Name, "Method", new { className = Model.Fullname,id = method.Id })
+				
+				@if (method.Parameters.Count > 0)
+				{
+				<text>(</text>@method.ParameterTypes()<text>)</text>
+				}
+				</td>
+				<td class="description">@method.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@if (Model.Properties.Count > 0)
+{
+	<h3 class="title">Properties</h3>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th class="description">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (Property property in Model.Properties)
+		{
+			<tr>
+				<td class="imagecolumn"><img src="@Url.Content("~/Assets/Images/property.gif")" border="0" alt="property" /></td>
+				<td>@Html.ActionLink(property.Name, "Property", new { className = Model.Fullname, id = property.Id })</td>
+				<td class="description">@property.Summary</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+
+@if (Model.Members.Count > 0)
+{
+	<h3 class="title">Members</h3>
+	<table class="types">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th class="description">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (MemberSummary property in Model.Members)
+		{
+			<tr>
+				<td class="imagecolumn"></td>
+				<td>@property.Name</td>
+				<td class="description">@property.Description</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+}
+</div>
