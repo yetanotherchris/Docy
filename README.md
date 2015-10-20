@@ -1,8 +1,5 @@
 ![](https://github.com/yetanotherchris/Docy/blob/master/logo.png)
 
-Docy
-====
-
 Docy is a tool for producing the MSDN script-free look for .NET documentation, using XML comments. It produces static html, wiki markup and also has an MVC site. It uses the Razor view engine and Jolt.
 
 The project uses the following technologies:
