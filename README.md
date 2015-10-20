@@ -35,8 +35,8 @@ At present the output is the script-free look. However if you are familiar with 
 
 ### Screenshots
 
-(https://github.com/yetanotherchris/Docy/blob/master/screenshot1.png)
-(https://github.com/yetanotherchris/Docy/blob/master/screenshot2.png)
+![](https://github.com/yetanotherchris/Docy/blob/master/screenshot1.png)
+![](https://github.com/yetanotherchris/Docy/blob/master/screenshot2.png)
 
 ###Roll your own###
 
