@@ -11,12 +11,12 @@ The project uses the following technologies:
 
 You therefore need the .NET 4 framework to run Docy. 
 
-Docy vs Sandcastle or NDoc3. 
+###Docy vs Sandcastle or NDoc3. 
 Docy's primary goal is generating the script-free MSDN look, and providing an API that is quick and easy to use. It is "feature-light".
 It does not produce HTML help, MSDN deep-tree look nor a whole raft of features that Docproject provides you with. 
 It is aimed at small/mid-size frameworks and not giant ones like the .NET framework, infragistics etc.
 
-###Current Known Issues###
+###Current Known Issues
 * At present Generics support is buggy (and comments are not retrieved). I'm looking for a Generics guru to help with this. Please contact me via codeplex if you can help out.
 * Static methods and extension methods don't have their summaries included.
 * Static methods aren't shown with the appropriate icon
