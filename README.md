@@ -1,3 +1,5 @@
+![](https://github.com/yetanotherchris/Docy/blob/master/logo.png)
+
 Docy
 ====
 
@@ -16,7 +18,7 @@ Docy's primary goal is generating the script-free MSDN look, and providing an AP
 It does not produce HTML help, MSDN deep-tree look nor a whole raft of features that Docproject provides you with. 
 It is aimed at small/mid-size frameworks and not giant ones like the .NET framework, infragistics etc.
 
-###Current Known Issues
+### Current Known Issues
 * At present Generics support is buggy (and comments are not retrieved). I'm looking for a Generics guru to help with this. Please contact me via codeplex if you can help out.
 * Static methods and extension methods don't have their summaries included.
 * Static methods aren't shown with the appropriate icon
@@ -33,6 +35,11 @@ Docy has two downloads. One is a command line tool for producing static content,
 3. Website using ASP.NET MVC 3.
 
 At present the output is the script-free look. However if you are familiar with the http://haacked.com/archive/2011/01/06/razor-syntax-quick-reference.aspx it is easy to customise the views. The static HTML and wiki text is produced using Razor syntax.
+
+### Screenshots
+
+(https://github.com/yetanotherchris/Docy/blob/master/screenshot1.png)
+(https://github.com/yetanotherchris/Docy/blob/master/screenshot2.png)
 
 ###Roll your own###
 
@@ -58,10 +65,3 @@ The API is easy to use if you want to make your own generator:
     	}
     }
 
-
-
-### Screenshots ###
-
-https://i.imgur.com/IKp1FEg
-
-https://i.imgur.com/IDbcGro
